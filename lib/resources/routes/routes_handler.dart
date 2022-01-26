@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:stephanie/screens/conceal_form/ui/conceal_form.dart';
 import 'package:stephanie/screens/home/ui/home.dart';
+import 'package:stephanie/screens/reveal_form/ui/reveal_form.dart';
 import 'app_routes.dart';
 
 class RoutesHandler {
@@ -11,6 +13,10 @@ class RoutesHandler {
     switch (settings.name) {
       case AppRoutes.home:
         return buildRoute(const Home(), settings: settings);
+      case AppRoutes.concealForm:
+        return buildRoute(const ConcealForm(), settings: settings);
+      case AppRoutes.revealForm:
+        return buildRoute(const RevealForm(), settings: settings);
     }
   }
 

@@ -28,5 +28,17 @@
   "created_by" : "Created by",
   "with_text" : "with",
   "email_address" : "Email address",
-  "copied" : "Copied!"
+  "copied" : "Copied!",
+  "conceal_message" : "Conceal\nmessage",
+  "pick_image" : "Step 1: Pick image",
+  "conceal_pick_image_desc" : "This image will be visible for everyone. It’s container for your ",
+  "secret_message" : "✨secret message✨",
+  "select_image" : "Select image",
+  "conceal_add_secret_title" : "Step 2: Add your secret",
+  "conceal_add_secret_desc_1" : "This will be concealed into image and wont be visible. Use ",
+  "conceal_add_secret_desc_2" : " function to decode this later",
+  "add_secret" : "Add secret",
+  "all_done" : "All set up?\nLet’s go.",
+  "reveal_message" : "Reveal\nmessage",
+  "reveal_pick_image_desc" : "Pick image thath conatins a "
 }

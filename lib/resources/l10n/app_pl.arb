@@ -27,5 +27,17 @@
   "created_by" : "Stworzone przez",
   "with_text" : "z",
   "email_address" : "Adres Email",
-  "copied" : "Skopiowano!"
+  "copied" : "Skopiowano!",
+  "conceal_message" : "Ukryj\nwiadomość",
+  "pick_image" : "Krok 1: Wybierz zdjęcie",
+  "conceal_pick_image_desc" : "To zdjęcie będzie widoczne dla każdego. Jest to kontyner dla twojej",
+  "secret_message" : "✨sekretnej wiadomości✨",
+  "select_image" : "Wybierz zdjęcie",
+  "conceal_add_secret_title" : "Krok 2: Dodaj swój sekret",
+  "conceal_add_secret_desc_1" : "To będzię ukryte w zdjęciu i będzie niewidoczne. Użyj funkcji ",
+  "conceal_add_secret_desc_2" : " aby odszyfrować później ten sekret",
+  "add_secret" : "Dodaj sekret",
+  "all_done" : "Wszystko ustawione?\nZaczynajmy.",
+  "reveal_message" : "Ujawnij\nwiadomość",
+  "reveal_pick_image_desc" : "Wybierz zdjęcie, które zawiera "
 }

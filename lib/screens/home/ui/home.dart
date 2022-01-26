@@ -6,6 +6,7 @@ import 'package:stephanie/common/helpers/opacity_helper.dart';
 import 'package:stephanie/common/helpers/url_helper.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
+import 'package:stephanie/resources/routes/app_routes.dart';
 import 'package:stephanie/screens/home/ui/socials_dialog.dart';
 import 'package:stephanie/widgets/longer_button.dart';
 import 'package:stephanie/widgets/small_button.dart';
@@ -29,15 +30,12 @@ class Home extends StatelessWidget {
               expandedHeight: 180.0,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               actions: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
-                  child: IconButton(
-                    onPressed: () => {},
-                    icon: const Icon(
-                      Icons.help_center,
-                      size: 26.0,
-                      color: AppColors.gray,
-                    ),
+                IconButton(
+                  onPressed: () => {},
+                  icon: const Icon(
+                    Icons.help_center,
+                    size: 26.0,
+                    color: AppColors.gray,
                   ),
                 ),
               ],
@@ -117,7 +115,6 @@ class Home extends StatelessWidget {
                           TextSpan(
                             text: getString(context)
                                 .conceal
-                                .toString()
                                 .toLowerCase(),
                             style: const TextStyle(
                               fontStyle: FontStyle.italic,
@@ -133,7 +130,6 @@ class Home extends StatelessWidget {
                           TextSpan(
                             text: getString(context)
                                 .reveal
-                                .toString()
                                 .toLowerCase(),
                             style: const TextStyle(
                               fontStyle: FontStyle.italic,
@@ -158,7 +154,10 @@ class Home extends StatelessWidget {
                           child: SmallButton(
                             text: getString(context).conceal,
                             isLoading: false,
-                            onClick: () {},
+                            onClick: () => Navigator.pushNamed(
+                              context,
+                              AppRoutes.concealForm,
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -168,7 +167,10 @@ class Home extends StatelessWidget {
                           child: SmallOutlinedButton(
                             text: getString(context).reveal,
                             isLoading: false,
-                            onClick: () {},
+                            onClick: () => Navigator.pushNamed(
+                              context,
+                              AppRoutes.revealForm,
+                            ),
                           ),
                         ),
                       ],
@@ -257,7 +259,8 @@ class Home extends StatelessWidget {
                     LongerButton(
                       text: getString(context).message_me,
                       isLoading: false,
-                      onClick: () async => UrlHelper.openEmail('ppiekarski8@gmail.com'),
+                      onClick: () async =>
+                          UrlHelper.openEmail('ppiekarski8@gmail.com'),
                     ),
                     const SizedBox(
                       height: 35.0,
@@ -278,7 +281,8 @@ class Home extends StatelessWidget {
                           TextSpan(
                             text: ' Piotr Piekarski ',
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () => AppBottomDialogHelper.show(context, const SocialsDialog()),
+                              ..onTap = () => AppBottomDialogHelper.show(
+                                  context, const SocialsDialog()),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.secondary,
@@ -300,7 +304,7 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 10.0,
+                      height: 20.0,
                     ),
                   ],
                 ),
