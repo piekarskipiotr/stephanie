@@ -11,5 +11,21 @@
         "type": "String"
       }
     }
-  }
+  },
+  "welcome_to_stephanie" : "Witaj w\nStephanie",
+  "steganography" : "Steganografia",
+  "conceal" : "Ukryj",
+  "reveal" : "Ujawnij",
+  "welcome_text_part_1" : " o to chodzi w tej aplikacji. ",
+  "welcome_text_part_2" : " swoją wiadomość w taki sposób, aby nikt nigdy o tym nie pomyślał! Lub",
+  "welcome_text_part_3" : " tajemice pliku  \uD83D\uDC40 ",
+  "what_steganography_is" : "Czym właściwie jest steganografia?",
+  "what_steganography_is_text" : " - badanie komunikacji w taki sposób, aby nie można było wykryć obecności wiadomości. W przeciwieństwie do kryptografii (gdzie nie zaprzecza się obecności wiadomości, ale jej treść jest tajna), steganografia stara się ukryć fakt prowadzenia komunikacji.",
+  "read_more" : "Czytaj dalej",
+  "want_to_discuss" : "Chcesz podyskutować?",
+  "message_me" : "Napisz do mnie",
+  "created_by" : "Stworzone przez",
+  "with_text" : "z",
+  "email_address" : "Adres Email",
+  "copied" : "Skopiowano!"
 }

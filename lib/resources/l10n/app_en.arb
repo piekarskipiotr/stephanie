@@ -12,5 +12,21 @@
         "type" : "String"
       }
     }
-  }
+  },
+  "welcome_to_stephanie" : "Welcome to\nStephanie",
+  "steganography" : "Steganography",
+  "conceal" : "Conceal",
+  "reveal" : "Reveal",
+  "welcome_text_part_1" : " that is what this app is all about. ",
+  "welcome_text_part_2" : " your message in such a way that no one will ever think about it! Or ",
+  "welcome_text_part_3" : " file secrets \uD83D\uDC40 ",
+  "what_steganography_is" : "What steganography actually is?",
+  "what_steganography_is_text" : " - the study of communication in such a way that the presence of a message cannot be detected. Contrary to cryptography (where the presence of a message is not denied, but its content is secret), steganography tries to hide the fact of conducting communication.",
+  "read_more" : "Read more",
+  "want_to_discuss" : "Want to discuss?",
+  "message_me" : "Message me",
+  "created_by" : "Created by",
+  "with_text" : "with",
+  "email_address" : "Email address",
+  "copied" : "Copied!"
 }

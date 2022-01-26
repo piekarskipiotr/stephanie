@@ -7,6 +7,13 @@ class AppTheme {
   static final lightTheme = ThemeData(
     primaryColor: AppColors.primary,
     primarySwatch: ColorHelper.toMaterialColor(AppColors.primary),
+    colorScheme: const ColorScheme.light(
+      primary: AppColors.primary,
+      primaryVariant: AppColors.primary,
+      secondary: AppColors.darkBlue,
+      onSecondary: AppColors.darkBlue,
+    ),
+
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -16,6 +23,7 @@ class AppTheme {
         ),
       ),
     ),
+
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         shape: RoundedRectangleBorder(
@@ -30,8 +38,15 @@ class AppTheme {
   );
 
   static final darkTheme = ThemeData(
-    primaryColor: AppColors.primary,
-    primarySwatch: ColorHelper.toMaterialColor(AppColors.primary),
+    primaryColor: AppColors.darkBlue,
+    primarySwatch: ColorHelper.toMaterialColor(AppColors.darkBlue),
+    colorScheme: const ColorScheme.dark(
+      primary: AppColors.darkBlue,
+      primaryVariant: AppColors.darkBlue,
+      secondary: AppColors.green,
+      onSecondary: AppColors.green,
+    ),
+
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -41,6 +56,7 @@ class AppTheme {
         ),
       ),
     ),
+
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         shape: RoundedRectangleBorder(
@@ -48,7 +64,7 @@ class AppTheme {
         ),
         side: const BorderSide(
           width: 2.0,
-          color: AppColors.primary,
+          color: AppColors.darkBlue,
         ),
       ),
     ),
