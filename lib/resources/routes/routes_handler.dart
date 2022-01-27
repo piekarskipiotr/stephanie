@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stephanie/data/models/conceal.dart';
+import 'package:stephanie/screens/conceal_form/bloc/conceal_form_cubit.dart';
 import 'package:stephanie/screens/conceal_form/ui/conceal_form.dart';
 import 'package:stephanie/screens/home/ui/home.dart';
 import 'package:stephanie/screens/reveal_form/ui/reveal_form.dart';
@@ -14,7 +17,19 @@ class RoutesHandler {
       case AppRoutes.home:
         return buildRoute(const Home(), settings: settings);
       case AppRoutes.concealForm:
-        return buildRoute(const ConcealForm(), settings: settings);
+        return buildRoute(
+          BlocProvider(
+            create: (_) => ConcealFormCubit(),
+            child: ConcealForm(
+              conceal: Conceal(
+                containerImage: null,
+                secret: null,
+                output: null,
+              ),
+            ),
+          ),
+          settings: settings,
+        );
       case AppRoutes.revealForm:
         return buildRoute(const RevealForm(), settings: settings);
     }

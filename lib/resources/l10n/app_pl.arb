@@ -39,5 +39,7 @@
   "add_secret" : "Dodaj sekret",
   "all_done" : "Wszystko ustawione?\nZaczynajmy.",
   "reveal_message" : "Ujawnij\nwiadomość",
-  "reveal_pick_image_desc" : "Wybierz zdjęcie, które zawiera "
+  "reveal_pick_image_desc" : "Wybierz zdjęcie, które zawiera ",
+  "camera" : "Aparat",
+  "gallery" : "Galeria"
 }

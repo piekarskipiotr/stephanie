@@ -4,17 +4,20 @@ class LongerButton extends StatelessWidget {
   final String text;
   final VoidCallback? onClick;
   final bool isLoading;
+  final ButtonStyle? customStyle;
 
   const LongerButton({
     Key? key,
     required this.text,
     required this.onClick,
     required this.isLoading,
+    this.customStyle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: customStyle,
       onPressed: isLoading ? () {} : onClick,
       child: Padding(
         padding: const EdgeInsets.only(

@@ -1,16 +1,28 @@
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stephanie/common/constants.dart';
+import 'package:stephanie/common/helpers/app_bottom_dialog_helper.dart';
 import 'package:stephanie/common/helpers/opacity_helper.dart';
 import 'package:stephanie/common/helpers/padding_helper.dart';
+import 'package:stephanie/data/models/conceal.dart';
 import 'package:stephanie/resources/app_theme.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
+import 'package:stephanie/screens/conceal_form/bloc/conceal_form_cubit.dart';
+import 'package:stephanie/screens/conceal_form/bloc/conceal_form_state.dart';
+import 'package:stephanie/widgets/image_source_dialog.dart';
 import 'package:stephanie/widgets/longer_button.dart';
 import 'package:stephanie/widgets/longer_outlined_button.dart';
 
 class ConcealForm extends StatelessWidget {
-  const ConcealForm({Key? key}) : super(key: key);
+  final Conceal conceal;
+
+  const ConcealForm({Key? key, required this.conceal}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +68,9 @@ class ConcealForm extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                color: AppTheme.isDarkMode() ? Colors.white : Colors.black,
+                                color: AppTheme.isDarkMode()
+                                    ? Colors.white
+                                    : Colors.black,
                               ),
                             )
                           : Text(
@@ -65,7 +79,9 @@ class ConcealForm extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                color: AppTheme.isDarkMode() ? Colors.white : Colors.black,
+                                color: AppTheme.isDarkMode()
+                                    ? Colors.white
+                                    : Colors.black,
                               ),
                             ),
                     ),
@@ -111,7 +127,8 @@ class ConcealForm extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                                text: getString(context).conceal_pick_image_desc,
+                                text:
+                                    getString(context).conceal_pick_image_desc,
                                 style: const TextStyle(
                                   color: AppColors.gray,
                                 ),
@@ -119,8 +136,9 @@ class ConcealForm extends StatelessWidget {
                               TextSpan(
                                 text: getString(context).secret_message,
                                 style: const TextStyle(
-                                    color: AppColors.gray,
-                                    fontStyle: FontStyle.italic),
+                                  color: AppColors.gray,
+                                  fontStyle: FontStyle.italic,
+                                ),
                               ),
                             ],
                           ),
@@ -130,20 +148,48 @@ class ConcealForm extends StatelessWidget {
                     const SizedBox(
                       height: 35.0,
                     ),
-                    SizedBox(
-                      width: 96.0,
-                      height: 96.0,
-                      child: CircleAvatar(
-                        child: Lottie.asset(mountains),
-                      ),
+                    BlocBuilder<ConcealFormCubit, ConcealFormState>(
+                      builder: (context, state) {
+                        if (state is LoadingContainerImageSucceeded) {
+                          return SizedBox(
+                            height: 256.0,
+                            child: Image.file(File(state.imagePath)),
+                          );
+                        } else if (state is LoadingContainerImage) {
+                          return const SizedBox(
+                            height: 96.0,
+                            width: 96.0,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          );
+                        } else {
+                          return SizedBox(
+                            width: 96.0,
+                            height: 96.0,
+                            child: CircleAvatar(
+                              backgroundColor: AppColors.lightGray,
+                              child: Lottie.asset(mountains),
+                            ),
+                          );
+                        }
+                      },
                     ),
                     const SizedBox(
                       height: 25.0,
                     ),
                     LongerOutlinedButton(
-                        text: getString(context).select_image,
-                        onClick: () {},
-                        isLoading: false,
+                      text: getString(context).select_image,
+                      onClick: () => AppBottomDialogHelper.show(
+                        context,
+                        BlocProvider.value(
+                          value: context.read<ConcealFormCubit>(),
+                          child: ImageSourceDialog(
+                            conceal: conceal,
+                          ),
+                        ),
+                      ),
+                      isLoading: false,
                     ),
                     const SizedBox(
                       height: 25.0,
@@ -185,8 +231,8 @@ class ConcealForm extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                                text:
-                                    getString(context).conceal_add_secret_desc_1,
+                                text: getString(context)
+                                    .conceal_add_secret_desc_1,
                                 style: const TextStyle(
                                   color: AppColors.gray,
                                 ),
@@ -198,8 +244,8 @@ class ConcealForm extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                               ),
                               TextSpan(
-                                text:
-                                    getString(context).conceal_add_secret_desc_2,
+                                text: getString(context)
+                                    .conceal_add_secret_desc_2,
                                 style: const TextStyle(
                                   color: AppColors.gray,
                                 ),
@@ -214,7 +260,13 @@ class ConcealForm extends StatelessWidget {
                     ),
                     LongerOutlinedButton(
                       text: getString(context).add_secret,
-                      onClick: () {},
+                      onClick: () async {
+                        FilePickerResult? result = await FilePicker.platform
+                            .pickFiles(type: FileType.any);
+                        if (result != null) {
+                          conceal.secret = result.files.single.path;
+                        }
+                      },
                       isLoading: false,
                     ),
                     const SizedBox(
@@ -236,8 +288,22 @@ class ConcealForm extends StatelessWidget {
                     ),
                     LongerButton(
                       text: getString(context).conceal,
-                      onClick: () {},
+                      onClick: (conceal.containerImage != null &&
+                              conceal.secret != null)
+                          ? () {
+                              log(conceal.toString());
+                            }
+                          : null,
                       isLoading: false,
+                      customStyle: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style!
+                          .copyWith(
+                            backgroundColor: (conceal.containerImage != null &&
+                                    conceal.secret != null)
+                                ? MaterialStateProperty.all(AppColors.primary)
+                                : MaterialStateProperty.all(AppColors.gray),
+                          ),
                     ),
                     const SizedBox(
                       height: 25.0,

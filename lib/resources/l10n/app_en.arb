@@ -40,5 +40,7 @@
   "add_secret" : "Add secret",
   "all_done" : "All set up?\nLet’s go.",
   "reveal_message" : "Reveal\nmessage",
-  "reveal_pick_image_desc" : "Pick image thath conatins a "
+  "reveal_pick_image_desc" : "Pick image thath conatins a ",
+  "camera" : "Camera",
+  "gallery" : "Gallery"
 }

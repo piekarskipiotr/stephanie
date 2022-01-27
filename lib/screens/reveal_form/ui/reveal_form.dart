@@ -135,6 +135,7 @@ class RevealForm extends StatelessWidget {
                       width: 96.0,
                       height: 96.0,
                       child: CircleAvatar(
+                        backgroundColor: AppColors.lightGray,
                         child: Lottie.asset(mountains),
                       ),
                     ),
