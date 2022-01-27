@@ -1,8 +1,8 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/opacity_helper.dart';
+import 'package:stephanie/common/helpers/padding_helper.dart';
 import 'package:stephanie/resources/app_theme.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
@@ -36,11 +36,10 @@ class RevealForm extends StatelessWidget {
               flexibleSpace: LayoutBuilder(
                 builder: (context, constraints) {
                   var top = constraints.biggest.height;
-                  log(top.toString());
                   return FlexibleSpaceBar(
                     centerTitle: false,
                     titlePadding: EdgeInsets.only(
-                      left: top < 100 ? 45.0 : 25.0,
+                      left: PaddingHelper.calculatePadding(top),
                       right: 25.0,
                       bottom: 13.0,
                     ),
@@ -84,7 +83,7 @@ class RevealForm extends StatelessWidget {
                       height: 25.0,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 50.0),
+                      padding: const EdgeInsets.only(right: 25.0),
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -101,7 +100,7 @@ class RevealForm extends StatelessWidget {
                       height: 15.0,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 50.0),
+                      padding: const EdgeInsets.only(right: 25.0),
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: RichText(
