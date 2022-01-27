@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stephanie/resources/colors/app_colors.dart';
 
 class SmallOutlinedButton extends StatelessWidget {
   final String text;
@@ -20,11 +19,11 @@ class SmallOutlinedButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: isLoading
-            ? const SizedBox(
+            ? SizedBox(
                 height: 16.0,
                 width: 16.0,
                 child: CircularProgressIndicator(
-                  color: AppColors.primary,
+                  color: Theme.of(context).primaryColor,
                 ),
               )
             : Text(

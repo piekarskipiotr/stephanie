@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/scheduler.dart';
 import 'colors/app_colors.dart';
 import 'colors/color_helper.dart';
 
@@ -38,13 +38,13 @@ class AppTheme {
   );
 
   static final darkTheme = ThemeData(
-    primaryColor: AppColors.darkBlue,
-    primarySwatch: ColorHelper.toMaterialColor(AppColors.darkBlue),
+    primaryColor: AppColors.green,
+    primarySwatch: ColorHelper.toMaterialColor(AppColors.green),
     colorScheme: const ColorScheme.dark(
-      primary: AppColors.darkBlue,
-      primaryVariant: AppColors.darkBlue,
-      secondary: AppColors.green,
-      onSecondary: AppColors.green,
+      primary: AppColors.green,
+      primaryVariant: AppColors.green,
+      secondary: AppColors.primary,
+      onSecondary: AppColors.primary,
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -64,9 +64,14 @@ class AppTheme {
         ),
         side: const BorderSide(
           width: 2.0,
-          color: AppColors.darkBlue,
+          color: AppColors.green,
         ),
       ),
     ),
   );
+
+  static bool isDarkMode() {
+    var brightness = SchedulerBinding.instance!.window.platformBrightness;
+    return brightness == Brightness.dark;
+  }
 }

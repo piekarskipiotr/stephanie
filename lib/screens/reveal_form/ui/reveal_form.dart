@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/opacity_helper.dart';
+import 'package:stephanie/resources/app_theme.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
 import 'package:stephanie/widgets/longer_button.dart';
@@ -53,17 +54,19 @@ class RevealForm extends StatelessWidget {
                             .reveal_message
                             .replaceAll('\n', ' '),
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.bold,
+                          color: AppTheme.isDarkMode() ? Colors.white : Colors.black,
                         ),
                       )
                           : Text(
                         getString(context).reveal_message,
                         textAlign: TextAlign.left,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.bold,
+                          color: AppTheme.isDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),

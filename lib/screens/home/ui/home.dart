@@ -4,6 +4,7 @@ import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/app_bottom_dialog_helper.dart';
 import 'package:stephanie/common/helpers/opacity_helper.dart';
 import 'package:stephanie/common/helpers/url_helper.dart';
+import 'package:stephanie/resources/app_theme.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
 import 'package:stephanie/resources/routes/app_routes.dart';
@@ -54,20 +55,22 @@ class Home extends StatelessWidget {
                       opacity:
                           OpacityHelper.calculateHeaderOpacity(top, 81.0, 91.0),
                       child: top < 86
-                          ? const Text(
+                          ? Text(
                               'Stephanie',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
+                                color: AppTheme.isDarkMode() ? Colors.white : Colors.black,
                               ),
                             )
                           : Text(
                               getString(context).welcome_to_stephanie,
                               textAlign: TextAlign.left,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
+                                color: AppTheme.isDarkMode() ? Colors.white : Colors.black,
                               ),
                             ),
                     ),
