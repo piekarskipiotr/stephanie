@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -258,17 +257,35 @@ class ConcealForm extends StatelessWidget {
                     const SizedBox(
                       height: 25.0,
                     ),
-                    LongerOutlinedButton(
-                      text: getString(context).add_secret,
-                      onClick: () async {
-                        FilePickerResult? result = await FilePicker.platform
-                            .pickFiles(type: FileType.any);
-                        if (result != null) {
-                          conceal.secret = result.files.single.path;
-                        }
-                      },
-                      isLoading: false,
+                    TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      textInputAction: TextInputAction.done,
+                      onChanged: (secret) => context
+                          .read<ConcealFormCubit>()
+                          .refreshSecret(conceal, secret),
+                      style: const TextStyle(
+                        fontSize: 17.0,
+                      ),
+                      maxLines: 1,
+                      decoration: InputDecoration(
+                        hintText: getString(context).secret_message_field,
+                        contentPadding: const EdgeInsets.all(15.0),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(26.0),
+                        ),
+                      ),
                     ),
+                    // LongerOutlinedButton(
+                    //   text: getString(context).add_secret,
+                    //   onClick: () async {
+                    //     FilePickerResult? result = await FilePicker.platform
+                    //         .pickFiles(type: FileType.any);
+                    //     if (result != null) {
+                    //       conceal.secret = result.files.single.path;
+                    //     }
+                    //   },
+                    //   isLoading: false,
+                    // ),
                     const SizedBox(
                       height: 35.0,
                     ),
@@ -286,24 +303,32 @@ class ConcealForm extends StatelessWidget {
                     const SizedBox(
                       height: 35.0,
                     ),
-                    LongerButton(
-                      text: getString(context).conceal,
-                      onClick: (conceal.containerImage != null &&
-                              conceal.secret != null)
-                          ? () {
-                              log(conceal.toString());
-                            }
-                          : null,
-                      isLoading: false,
-                      customStyle: Theme.of(context)
-                          .elevatedButtonTheme
-                          .style!
-                          .copyWith(
-                            backgroundColor: (conceal.containerImage != null &&
-                                    conceal.secret != null)
-                                ? MaterialStateProperty.all(AppColors.primary)
-                                : MaterialStateProperty.all(AppColors.gray),
-                          ),
+                    BlocBuilder<ConcealFormCubit, ConcealFormState>(
+                      builder: (context, state) {
+                        return LongerButton(
+                          text: getString(context).conceal,
+                          onClick: (conceal.containerImage != null &&
+                                  (conceal.secret != null &&
+                                      conceal.secret?.trim() != ''))
+                              ? () {
+                                  log(conceal.toString());
+                                }
+                              : null,
+                          isLoading: false,
+                          customStyle: Theme.of(context)
+                              .elevatedButtonTheme
+                              .style!
+                              .copyWith(
+                                backgroundColor: (conceal.containerImage !=
+                                            null &&
+                                        (conceal.secret != null &&
+                                            conceal.secret?.trim() != ''))
+                                    ? MaterialStateProperty.all(
+                                        AppColors.primary)
+                                    : MaterialStateProperty.all(AppColors.gray),
+                              ),
+                        );
+                      },
                     ),
                     const SizedBox(
                       height: 25.0,

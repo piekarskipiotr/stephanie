@@ -28,3 +28,13 @@ class RefreshContainerImage extends ConcealFormState {
   @override
   String toString() => runtimeType.toString();
 }
+
+class UpdatingSecret extends ConcealFormState {
+  @override
+  String toString() => runtimeType.toString();
+}
+
+class SecretUpdated extends ConcealFormState {
+  @override
+  String toString() => runtimeType.toString();
+}

@@ -11,4 +11,10 @@ class ConcealFormCubit extends Cubit<ConcealFormState> {
         ? LoadingContainerImageSucceeded(conceal.containerImage!)
         : LoadingContainerImageFailed());
   }
+
+  Future refreshSecret(Conceal conceal, String? secret) async {
+    emit(UpdatingSecret());
+    conceal.secret = secret;
+    emit(SecretUpdated());
+  }
 }

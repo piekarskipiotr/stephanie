@@ -42,5 +42,6 @@
   "reveal_message" : "Reveal\nmessage",
   "reveal_pick_image_desc" : "Pick image thath conatins a ",
   "camera" : "Camera",
-  "gallery" : "Gallery"
+  "gallery" : "Gallery",
+  "secret_message_field" :  "✨secret message✨"
 }

@@ -41,5 +41,6 @@
   "reveal_message" : "Ujawnij\nwiadomość",
   "reveal_pick_image_desc" : "Wybierz zdjęcie, które zawiera ",
   "camera" : "Aparat",
-  "gallery" : "Galeria"
+  "gallery" : "Galeria",
+  "secret_message_field" : "✨sekretna wiadomość✨"
 }
