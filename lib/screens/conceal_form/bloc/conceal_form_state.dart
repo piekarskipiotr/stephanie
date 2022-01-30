@@ -1,3 +1,5 @@
+import 'package:stephanie/data/models/conceal.dart';
+
 abstract class ConcealFormState {}
 
 class InitConcealFormState extends ConcealFormState {
@@ -44,6 +46,25 @@ class LoadingSecretSucceeded extends ConcealFormState {
 }
 
 class LoadingSecretFailed extends ConcealFormState {
+  @override
+  String toString() => runtimeType.toString();
+}
+
+class Concealing extends ConcealFormState {
+  @override
+  String toString() => runtimeType.toString();
+}
+
+class ConcealingSucceeded extends ConcealFormState {
+  final Conceal conceal;
+
+  ConcealingSucceeded(this.conceal);
+
+  @override
+  String toString() => runtimeType.toString();
+}
+
+class ConcealingFailed extends ConcealFormState {
   @override
   String toString() => runtimeType.toString();
 }

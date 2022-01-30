@@ -45,5 +45,9 @@
   "secret_message_field" : "✨sekretna wiadomość✨",
   "storage" : "Pamięć",
   "change_image" : "Zmień zdjęcie",
-  "change_secret" : "Zmień sekret"
+  "change_secret" : "Zmień sekret",
+  "error_during_concealing" : "Wystąpił nieoczekiwany błąd :(",
+  "close" : "Zamknij okno",
+  "conceal_info_dialog_header" : "Twój sekret został ukryty w zdjęciu!",
+  "conceal_info_dialog_secondary" : "Zdjęcie zostało zapisane w albumie 'stephanie', rozmiar pliku mógł ulec zmianie."
 }

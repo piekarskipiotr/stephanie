@@ -1,10 +1,10 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stegify/flutter_stegify.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:stephanie/common/helpers/path_helper.dart';
 import 'package:stephanie/data/models/conceal.dart';
 import 'package:stephanie/screens/conceal_form/bloc/conceal_form_state.dart';
 
@@ -26,15 +26,34 @@ class ConcealFormCubit extends Cubit<ConcealFormState> {
   }
 
   Future concealSecret(Conceal conceal) async {
-    Directory appDocDir = await getApplicationDocumentsDirectory();
-    String appDocPath = appDocDir.path;
-    await Stegify.encode(conceal.containerImage, conceal.secret, '${appDocPath}/image');
-    GallerySaver.saveImage('${appDocPath}/image.jpg', albumName: 'stephanie');
+    emit(Concealing());
+    var dir = await getTemporaryDirectory();
+    var path = dir.path;
+    var fileName = PathHelper.getFileNameWithExtensionFromPath(conceal.containerImage!);
+    var finalDestination = '$path/secret_$fileName';
+
+    try {
+      // conceal secret into container image
+      await Stegify.encode(conceal.containerImage, conceal.secret, finalDestination);
+
+      // save image to gallery
+      var extension = PathHelper.getExtensionFromPath(finalDestination);
+      var saved = await GallerySaver.saveImage('$finalDestination$extension', albumName: 'stephanie');
+      if (saved != null && saved) {
+        conceal.output = '$finalDestination$extension';
+        emit(ConcealingSucceeded(conceal));
+      } else {
+        emit(ConcealingFailed());
+      }
+    } catch (e) {
+      log(e.toString());
+      emit(ConcealingFailed());
+    }
   }
 
   @override
   void onChange(Change<ConcealFormState> change) {
     super.onChange(change);
-    log(change.toString());
+    log(change.toString(), name: runtimeType.toString());
   }
 }

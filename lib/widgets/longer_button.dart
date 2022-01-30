@@ -28,10 +28,11 @@ class LongerButton extends StatelessWidget {
         ),
         child: isLoading
             ? const SizedBox(
-                height: 16.0,
-                width: 16.0,
+                height: 20.0,
+                width: 20.0,
                 child: CircularProgressIndicator(
                   color: Colors.white,
+                  strokeWidth: 2,
                 ),
               )
             : Text(

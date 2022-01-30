@@ -46,5 +46,9 @@
   "secret_message_field" :  "✨secret message✨",
   "storage" : "Storage",
   "change_image" : "Change image",
-  "change_secret" : "Change secret"
+  "change_secret" : "Change secret",
+  "error_during_concealing" : "An unexpected error occurred :(",
+  "close" : "Close dialog",
+  "conceal_info_dialog_header" : "Your secret is conceal in the image!",
+  "conceal_info_dialog_secondary" : "Photo changes in the album 'stephanie', file size can be changed."
 }
