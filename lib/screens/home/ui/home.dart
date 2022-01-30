@@ -116,9 +116,7 @@ class Home extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: getString(context)
-                                .conceal
-                                .toLowerCase(),
+                            text: '\n${getString(context).conceal}',
                             style: const TextStyle(
                               fontStyle: FontStyle.italic,
                               color: AppColors.gray,

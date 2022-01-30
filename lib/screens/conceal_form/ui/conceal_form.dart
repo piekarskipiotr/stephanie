@@ -1,22 +1,23 @@
-import 'dart:developer';
 import 'dart:io';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/app_bottom_dialog_helper.dart';
+import 'package:stephanie/common/helpers/path_helper.dart';
 import 'package:stephanie/common/helpers/opacity_helper.dart';
 import 'package:stephanie/common/helpers/padding_helper.dart';
 import 'package:stephanie/data/models/conceal.dart';
 import 'package:stephanie/resources/app_theme.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
+import 'package:stephanie/resources/colors/color_helper.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
 import 'package:stephanie/screens/conceal_form/bloc/conceal_form_cubit.dart';
 import 'package:stephanie/screens/conceal_form/bloc/conceal_form_state.dart';
 import 'package:stephanie/widgets/image_source_dialog.dart';
 import 'package:stephanie/widgets/longer_button.dart';
 import 'package:stephanie/widgets/longer_outlined_button.dart';
+import 'package:stephanie/widgets/secret_source_dialog.dart';
 
 class ConcealForm extends StatelessWidget {
   final Conceal conceal;
@@ -102,7 +103,7 @@ class ConcealForm extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          getString(context).select_image,
+                          getString(context).pick_image,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                             fontSize: 28.0,
@@ -150,8 +151,10 @@ class ConcealForm extends StatelessWidget {
                     BlocBuilder<ConcealFormCubit, ConcealFormState>(
                       builder: (context, state) {
                         if (state is LoadingContainerImageSucceeded) {
-                          return SizedBox(
-                            height: 256.0,
+                          return ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxHeight: 256.0,
+                            ),
                             child: Image.file(File(state.imagePath)),
                           );
                         } else if (state is LoadingContainerImage) {
@@ -163,33 +166,46 @@ class ConcealForm extends StatelessWidget {
                             ),
                           );
                         } else {
-                          return SizedBox(
-                            width: 96.0,
-                            height: 96.0,
-                            child: CircleAvatar(
-                              backgroundColor: AppColors.lightGray,
-                              child: Lottie.asset(mountains),
-                            ),
-                          );
+                          return conceal.containerImage == null
+                              ? SizedBox(
+                                  width: 96.0,
+                                  height: 96.0,
+                                  child: CircleAvatar(
+                                    backgroundColor: AppColors.lightGray,
+                                    child: Lottie.asset(mountains),
+                                  ),
+                                )
+                              : ConstrainedBox(
+                                  constraints: const BoxConstraints(
+                                    maxHeight: 256.0,
+                                  ),
+                                  child:
+                                      Image.file(File(conceal.containerImage!)),
+                                );
                         }
                       },
                     ),
                     const SizedBox(
                       height: 25.0,
                     ),
-                    LongerOutlinedButton(
-                      text: getString(context).select_image,
-                      onClick: () => AppBottomDialogHelper.show(
-                        context,
-                        BlocProvider.value(
-                          value: context.read<ConcealFormCubit>(),
-                          child: ImageSourceDialog(
-                            conceal: conceal,
+                    BlocBuilder<ConcealFormCubit, ConcealFormState>(
+                        builder: (context, state) {
+                      return LongerOutlinedButton(
+                        text: conceal.containerImage == null
+                            ? getString(context).select_image
+                            : getString(context).change_image,
+                        onClick: () => AppBottomDialogHelper.show(
+                          context,
+                          BlocProvider.value(
+                            value: context.read<ConcealFormCubit>(),
+                            child: ImageSourceDialog(
+                              conceal: conceal,
+                            ),
                           ),
                         ),
-                      ),
-                      isLoading: false,
-                    ),
+                        isLoading: false,
+                      );
+                    }),
                     const SizedBox(
                       height: 25.0,
                     ),
@@ -239,8 +255,9 @@ class ConcealForm extends StatelessWidget {
                               TextSpan(
                                 text: getString(context).reveal,
                                 style: const TextStyle(
-                                    color: AppColors.gray,
-                                    fontWeight: FontWeight.bold),
+                                  color: AppColors.gray,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               TextSpan(
                                 text: getString(context)
@@ -254,38 +271,175 @@ class ConcealForm extends StatelessWidget {
                         ),
                       ),
                     ),
+                    BlocBuilder<ConcealFormCubit, ConcealFormState>(
+                      builder: (context, state) {
+                        if (state is LoadingSecretSucceeded) {
+                          var isImage = PathHelper.isImage(state.secretPath);
+
+                          return Column(
+                            children: [
+                              const SizedBox(
+                                height: 35.0,
+                              ),
+                              isImage
+                                  ? ConstrainedBox(
+                                      constraints: const BoxConstraints(
+                                        maxHeight: 256.0,
+                                      ),
+                                      child: Image.file(File(state.secretPath)),
+                                    )
+                                  : Container(
+                                      height: 164.0,
+                                      width: 164.0,
+                                      decoration: BoxDecoration(
+                                        color: ColorHelper.darken(
+                                          Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                          0.1,
+                                        ).withOpacity(0.5),
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(26.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(15.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const SizedBox(
+                                              width: 48.0,
+                                              height: 48.0,
+                                              child: CircleAvatar(
+                                                backgroundColor: Colors.white,
+                                                child: Icon(
+                                                  Icons.music_note,
+                                                  size: 32.0,
+                                                  color: AppColors.red,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 15.0,
+                                            ),
+                                            Text(
+                                              PathHelper.getFileNameFromPath(
+                                                  state.secretPath),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                            ],
+                          );
+                        } else if (state is LoadingSecret) {
+                          return Column(
+                            children: [
+                              const SizedBox(
+                                height: 35.0,
+                              ),
+                              SizedBox(
+                                height: 96.0,
+                                width: 96.0,
+                                child: CircularProgressIndicator(
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          if (conceal.secret == null) {
+                            return Container();
+                          } else {
+                            var isImage = PathHelper.isImage(conceal.secret!);
+                            return Column(
+                              children: [
+                                const SizedBox(
+                                  height: 35.0,
+                                ),
+                                isImage
+                                    ? ConstrainedBox(
+                                        constraints: const BoxConstraints(
+                                          maxHeight: 256.0,
+                                        ),
+                                        child:
+                                            Image.file(File(conceal.secret!)),
+                                      )
+                                    : Container(
+                                        height: 164.0,
+                                        width: 164.0,
+                                        decoration: BoxDecoration(
+                                          color: ColorHelper.darken(
+                                            Theme.of(context)
+                                                .scaffoldBackgroundColor,
+                                            0.1,
+                                          ).withOpacity(0.5),
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(26.0),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(15.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const SizedBox(
+                                                width: 48.0,
+                                                height: 48.0,
+                                                child: CircleAvatar(
+                                                  backgroundColor: Colors.white,
+                                                  child: Icon(
+                                                    Icons.music_note,
+                                                    size: 32.0,
+                                                    color: AppColors.red,
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 15.0,
+                                              ),
+                                              Text(
+                                                PathHelper.getFileNameFromPath(
+                                                    conceal.secret!),
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                              ],
+                            );
+                          }
+                        }
+                      },
+                    ),
                     const SizedBox(
                       height: 25.0,
                     ),
-                    TextFormField(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      textInputAction: TextInputAction.done,
-                      onChanged: (secret) => context
-                          .read<ConcealFormCubit>()
-                          .refreshSecret(conceal, secret),
-                      style: const TextStyle(
-                        fontSize: 17.0,
-                      ),
-                      maxLines: 1,
-                      decoration: InputDecoration(
-                        hintText: getString(context).secret_message_field,
-                        contentPadding: const EdgeInsets.all(15.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(26.0),
+                    BlocBuilder<ConcealFormCubit, ConcealFormState>(
+                        builder: (context, state) {
+                      return LongerOutlinedButton(
+                        text: conceal.secret == null
+                            ? getString(context).add_secret
+                            : getString(context).change_secret,
+                        onClick: () => AppBottomDialogHelper.show(
+                          context,
+                          BlocProvider.value(
+                            value: context.read<ConcealFormCubit>(),
+                            child: SecretSourceDialog(
+                              conceal: conceal,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    // LongerOutlinedButton(
-                    //   text: getString(context).add_secret,
-                    //   onClick: () async {
-                    //     FilePickerResult? result = await FilePicker.platform
-                    //         .pickFiles(type: FileType.any);
-                    //     if (result != null) {
-                    //       conceal.secret = result.files.single.path;
-                    //     }
-                    //   },
-                    //   isLoading: false,
-                    // ),
+                        isLoading: false,
+                      );
+                    }),
                     const SizedBox(
                       height: 35.0,
                     ),
@@ -311,7 +465,9 @@ class ConcealForm extends StatelessWidget {
                                   (conceal.secret != null &&
                                       conceal.secret?.trim() != ''))
                               ? () {
-                                  log(conceal.toString());
+                                  context
+                                      .read<ConcealFormCubit>()
+                                      .concealSecret(conceal);
                                 }
                               : null,
                           isLoading: false,
@@ -319,13 +475,16 @@ class ConcealForm extends StatelessWidget {
                               .elevatedButtonTheme
                               .style!
                               .copyWith(
-                                backgroundColor: (conceal.containerImage !=
-                                            null &&
-                                        (conceal.secret != null &&
-                                            conceal.secret?.trim() != ''))
-                                    ? MaterialStateProperty.all(
-                                        AppColors.primary)
-                                    : MaterialStateProperty.all(AppColors.gray),
+                                backgroundColor:
+                                    (conceal.containerImage != null &&
+                                            (conceal.secret != null &&
+                                                conceal.secret?.trim() != ''))
+                                        ? MaterialStateProperty.all(
+                                            Theme.of(context).primaryColor,
+                                          )
+                                        : MaterialStateProperty.all(
+                                            AppColors.gray,
+                                          ),
                               ),
                         );
                       },

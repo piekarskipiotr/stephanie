@@ -29,12 +29,21 @@ class RefreshContainerImage extends ConcealFormState {
   String toString() => runtimeType.toString();
 }
 
-class UpdatingSecret extends ConcealFormState {
+class LoadingSecret extends ConcealFormState {
   @override
   String toString() => runtimeType.toString();
 }
 
-class SecretUpdated extends ConcealFormState {
+class LoadingSecretSucceeded extends ConcealFormState {
+  final String secretPath;
+
+  LoadingSecretSucceeded(this.secretPath);
+
+  @override
+  String toString() => runtimeType.toString();
+}
+
+class LoadingSecretFailed extends ConcealFormState {
   @override
   String toString() => runtimeType.toString();
 }

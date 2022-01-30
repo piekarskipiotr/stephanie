@@ -22,7 +22,8 @@ dependencies:
   image_picker: ^0.8.4+5
   gallery_saver: ^2.3.2
   file_picker: ^4.3.3
-  encrypt: ^5.0.1
+  flutter_stegify: ^0.2.0
+  path_provider: ^2.0.8
 
 dev_dependencies:
   flutter_test:

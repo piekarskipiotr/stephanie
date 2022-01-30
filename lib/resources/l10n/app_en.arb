@@ -36,12 +36,15 @@
   "select_image" : "Select image",
   "conceal_add_secret_title" : "Step 2: Add your secret",
   "conceal_add_secret_desc_1" : "This will be concealed into image and wont be visible. Use ",
-  "conceal_add_secret_desc_2" : " function to decode this later",
+  "conceal_add_secret_desc_2" : " function to decode this later\n.jpg .png .mp3",
   "add_secret" : "Add secret",
   "all_done" : "All set up?\nLet’s go.",
   "reveal_message" : "Reveal\nmessage",
   "reveal_pick_image_desc" : "Pick image thath conatins a ",
   "camera" : "Camera",
   "gallery" : "Gallery",
-  "secret_message_field" :  "✨secret message✨"
+  "secret_message_field" :  "✨secret message✨",
+  "storage" : "Storage",
+  "change_image" : "Change image",
+  "change_secret" : "Change secret"
 }
