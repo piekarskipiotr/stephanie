@@ -30,16 +30,6 @@ class Home extends StatelessWidget {
               pinned: true,
               expandedHeight: 180.0,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              actions: [
-                IconButton(
-                  onPressed: () => {},
-                  icon: const Icon(
-                    Icons.help_center,
-                    size: 26.0,
-                    color: AppColors.gray,
-                  ),
-                ),
-              ],
               flexibleSpace: LayoutBuilder(
                 builder: (context, constraints) {
                   var top = constraints.biggest.height;
@@ -235,7 +225,7 @@ class Home extends StatelessWidget {
                       child: SmallOutlinedButton(
                         text: getString(context).read_more,
                         isLoading: false,
-                        onClick: () {},
+                        onClick: () => UrlHelper.openUrl('https://pl.wikipedia.org/wiki/Steganografia'),
                       ),
                     ),
                     const SizedBox(
@@ -295,7 +285,7 @@ class Home extends StatelessWidget {
                           TextSpan(
                             text: ' Flutter 💙',
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () => {},
+                              ..onTap = () => UrlHelper.openUrl('https://flutter.dev/'),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.secondary,
