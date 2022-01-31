@@ -49,5 +49,8 @@
   "error_during_concealing" : "Wystąpił nieoczekiwany błąd :(",
   "close" : "Zamknij okno",
   "conceal_info_dialog_header" : "Twój sekret został ukryty w zdjęciu!",
-  "conceal_info_dialog_secondary" : "Zdjęcie zostało zapisane w albumie 'stephanie', rozmiar pliku mógł ulec zmianie."
+  "file_too_large_error_message" : "Plik sekretu jest za duży dla kontynera",
+  "conceal_info_dialog_secondary_part_1" : "Wynikowy rozmiar pliku wynosi: ",
+  "conceal_info_dialog_secondary_part_2" : " Zdjęcie zostało zapisane w albumie 'stephanie',",
+  "conceal_info_dialog_secondary_part_3" : " otwórz zdjęcie."
 }

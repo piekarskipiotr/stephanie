@@ -65,6 +65,10 @@ class ConcealingSucceeded extends ConcealFormState {
 }
 
 class ConcealingFailed extends ConcealFormState {
+  final String? errorMessage;
+
+  ConcealingFailed(this.errorMessage);
+
   @override
   String toString() => runtimeType.toString();
 }

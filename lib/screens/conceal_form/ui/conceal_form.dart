@@ -37,10 +37,10 @@ class ConcealForm extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const SizedBox(
-                    width: 20.0,
+                    width: 10.0,
                   ),
                   Text(
-                    getString(context).error_during_concealing,
+                    state.errorMessage == null ? getString(context).error_during_concealing : getString(context).file_too_large_error_message,
                     style: const TextStyle(
                       color: Colors.white,
                     ),

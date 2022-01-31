@@ -24,6 +24,7 @@ dependencies:
   file_picker: ^4.3.3
   flutter_stegify: ^0.2.0
   path_provider: ^2.0.8
+  open_file: ^3.2.1
 
 dev_dependencies:
   flutter_test:

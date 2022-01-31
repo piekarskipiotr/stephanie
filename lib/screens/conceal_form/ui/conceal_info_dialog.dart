@@ -1,6 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:open_file/open_file.dart';
 import 'package:stephanie/common/constants.dart';
+import 'package:stephanie/common/helpers/file_helper.dart';
 import 'package:stephanie/data/models/conceal.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
@@ -54,14 +57,37 @@ class ConcealInfoDialog extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                    child: Text(
-                      getString(context).conceal_info_dialog_secondary,
+                    child: RichText(
                       textAlign: TextAlign.center,
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w500
+                      text: TextSpan(
+                        style: const TextStyle(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w500
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: getString(context).conceal_info_dialog_secondary_part_1,
+                          ),
+                          TextSpan(
+                            text: FileHelper.getSizeOfFileMB(conceal.output!),
+                            style: const TextStyle(
+                                color: AppColors.red
+                            ),
+                          ),
+                          TextSpan(
+                            text: getString(context).conceal_info_dialog_secondary_part_2,
+                          ),
+                          TextSpan(
+                            text: getString(context).conceal_info_dialog_secondary_part_3,
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => OpenFile.open(conceal.output!),
+                            style: TextStyle(
+                                color: Theme.of(context).primaryColor
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

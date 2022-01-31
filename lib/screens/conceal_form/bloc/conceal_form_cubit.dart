@@ -43,11 +43,12 @@ class ConcealFormCubit extends Cubit<ConcealFormState> {
         conceal.output = '$finalDestination$extension';
         emit(ConcealingSucceeded(conceal));
       } else {
-        emit(ConcealingFailed());
+        emit(ConcealingFailed(null));
       }
     } catch (e) {
-      log(e.toString());
-      emit(ConcealingFailed());
+      var message = e.toString();
+      log(message);
+      emit(ConcealingFailed(message.contains('data file too large for this carrier') ? 'file-too-large' : null));
     }
   }
 
