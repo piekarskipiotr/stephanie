@@ -5,6 +5,7 @@ import 'package:open_file/open_file.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/file_helper.dart';
 import 'package:stephanie/data/models/conceal.dart';
+import 'package:stephanie/resources/app_theme.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
 import 'package:stephanie/resources/routes/app_routes.dart';
@@ -38,7 +39,10 @@ class ConcealInfoDialog extends StatelessWidget {
                     child: Text(
                       getString(context).conceal_info_dialog_header,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style: TextStyle(
+                        color: AppTheme.isDarkMode()
+                            ? Colors.white
+                            : Colors.black,
                         fontSize: 42.0,
                         fontWeight: FontWeight.bold,
                       ),

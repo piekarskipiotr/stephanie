@@ -6,6 +6,7 @@ import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/file_helper.dart';
 import 'package:stephanie/common/helpers/path_helper.dart';
 import 'package:stephanie/data/models/reveal.dart';
+import 'package:stephanie/resources/app_theme.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
 import 'package:stephanie/resources/routes/app_routes.dart';
@@ -63,30 +64,37 @@ class RevealInfoDialog extends StatelessWidget {
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                       text: TextSpan(
-                        style: const TextStyle(
+                        style: TextStyle(
+                            color: AppTheme.isDarkMode()
+                                ? Colors.white
+                                : Colors.black,
                             fontSize: 14.0,
-                            fontWeight: FontWeight.w500
-                        ),
+                            fontWeight: FontWeight.w500),
                         children: <TextSpan>[
                           TextSpan(
-                            text: getString(context).info_dialog_secondary_part_1,
+                            text:
+                                getString(context).info_dialog_secondary_part_1,
                           ),
                           TextSpan(
                             text: FileHelper.getSizeOfFileMB(reveal.output!),
-                            style: const TextStyle(
-                                color: AppColors.red
-                            ),
+                            style: const TextStyle(color: AppColors.red),
                           ),
                           TextSpan(
-                            text: PathHelper.getExtensionFromPath(reveal.output!) == '.jpg' ? getString(context).info_dialog_secondary_part_2 :  getString(context).info_dialog_secondary_part_2_2,
+                            text: PathHelper.getExtensionFromPath(
+                                        reveal.output!) ==
+                                    '.jpg'
+                                ? getString(context)
+                                    .info_dialog_secondary_part_2
+                                : getString(context)
+                                    .info_dialog_secondary_part_2_2,
                           ),
                           TextSpan(
-                            text: getString(context).info_dialog_secondary_part_3,
+                            text:
+                                getString(context).info_dialog_secondary_part_3,
                             recognizer: TapGestureRecognizer()
                               ..onTap = () => OpenFile.open(reveal.output!),
                             style: TextStyle(
-                                color: Theme.of(context).primaryColor
-                            ),
+                                color: Theme.of(context).primaryColor),
                           ),
                         ],
                       ),
