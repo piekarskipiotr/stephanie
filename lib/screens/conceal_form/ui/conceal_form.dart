@@ -40,7 +40,9 @@ class ConcealForm extends StatelessWidget {
                     width: 10.0,
                   ),
                   Text(
-                    state.errorMessage == null ? getString(context).error_during_concealing : getString(context).file_too_large_error_message,
+                    state.errorMessage == null
+                        ? getString(context).error_during_concealing
+                        : getString(context).file_too_large_error_message,
                     style: const TextStyle(
                       color: Colors.white,
                     ),
@@ -52,7 +54,11 @@ class ConcealForm extends StatelessWidget {
           );
         } else if (state is ConcealingSucceeded) {
           AppDialogHelper.showFullScreenDialog(
-              context, ConcealInfoDialog(conceal: conceal));
+            context,
+            ConcealInfoDialog(
+              conceal: conceal,
+            ),
+          );
         }
       },
       child: Scaffold(

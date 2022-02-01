@@ -53,5 +53,6 @@
   "file_too_large_error_message" : "Data file too large for this container",
   "conceal_info_dialog_secondary_part_1" : "The resulting file size is: ",
   "conceal_info_dialog_secondary_part_2" : " The image has been saved in the 'stephanie' album,",
-  "conceal_info_dialog_secondary_part_3" : " open the image."
+  "conceal_info_dialog_secondary_part_3" : " open the image.",
+  "reveal_info_dialog_header" : "The secret has been revealed!"
 }

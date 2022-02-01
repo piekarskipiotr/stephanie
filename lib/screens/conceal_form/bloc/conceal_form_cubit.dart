@@ -29,7 +29,7 @@ class ConcealFormCubit extends Cubit<ConcealFormState> {
     emit(Concealing());
     var dir = await getTemporaryDirectory();
     var path = dir.path;
-    var fileName = PathHelper.getFileNameWithExtensionFromPath(conceal.containerImage!);
+    var fileName = PathHelper.getFileNameFromPath(conceal.containerImage!);
     var finalDestination = '$path/secret_$fileName';
 
     try {
@@ -37,10 +37,10 @@ class ConcealFormCubit extends Cubit<ConcealFormState> {
       await Stegify.encode(conceal.containerImage, conceal.secret, finalDestination);
 
       // save image to gallery
-      var extension = PathHelper.getExtensionFromPath(finalDestination);
-      var saved = await GallerySaver.saveImage('$finalDestination$extension', albumName: 'stephanie');
+      finalDestination += '.jpg';
+      var saved = await GallerySaver.saveImage(finalDestination, albumName: 'stephanie');
       if (saved != null && saved) {
-        conceal.output = '$finalDestination$extension';
+        conceal.output = finalDestination;
         emit(ConcealingSucceeded(conceal));
       } else {
         emit(ConcealingFailed(null));
