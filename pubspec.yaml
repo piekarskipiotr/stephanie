@@ -25,7 +25,6 @@ dependencies:
   flutter_stegify: ^0.2.0
   path_provider: ^2.0.8
   open_file: ^3.2.1
-  audioplayers: ^0.20.1
 
 dev_dependencies:
   flutter_test:
