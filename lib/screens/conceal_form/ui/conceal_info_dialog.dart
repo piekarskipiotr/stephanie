@@ -68,7 +68,7 @@ class ConcealInfoDialog extends StatelessWidget {
                         ),
                         children: <TextSpan>[
                           TextSpan(
-                            text: getString(context).conceal_info_dialog_secondary_part_1,
+                            text: getString(context).info_dialog_secondary_part_1,
                           ),
                           TextSpan(
                             text: FileHelper.getSizeOfFileMB(conceal.output!),
@@ -77,10 +77,10 @@ class ConcealInfoDialog extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: getString(context).conceal_info_dialog_secondary_part_2,
+                            text: getString(context).info_dialog_secondary_part_2,
                           ),
                           TextSpan(
-                            text: getString(context).conceal_info_dialog_secondary_part_3,
+                            text: getString(context).info_dialog_secondary_part_3,
                             recognizer: TapGestureRecognizer()
                               ..onTap = () => OpenFile.open(conceal.output!),
                             style: TextStyle(

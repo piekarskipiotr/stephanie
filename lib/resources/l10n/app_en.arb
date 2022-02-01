@@ -50,9 +50,10 @@
   "error_during_concealing" : "An unexpected error occurred :(",
   "close" : "Close dialog",
   "conceal_info_dialog_header" : "Your secret is conceal in the image!",
+  "reveal_info_dialog_header" : "The secret has been revealed!",
   "file_too_large_error_message" : "Data file too large for this container",
-  "conceal_info_dialog_secondary_part_1" : "The resulting file size is: ",
-  "conceal_info_dialog_secondary_part_2" : " The image has been saved in the 'stephanie' album,",
-  "conceal_info_dialog_secondary_part_3" : " open the image.",
-  "reveal_info_dialog_header" : "The secret has been revealed!"
+  "info_dialog_secondary_part_1" : "The resulting file size is: ",
+  "info_dialog_secondary_part_2" : " The image has been saved in the 'stephanie' album,",
+  "info_dialog_secondary_part_2_2" : " The audio file has been extracted and you can listen to it,",
+  "info_dialog_secondary_part_3" : " open the file."
 }

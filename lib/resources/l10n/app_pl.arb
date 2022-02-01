@@ -49,9 +49,10 @@
   "error_during_concealing" : "Wystąpił nieoczekiwany błąd :(",
   "close" : "Zamknij okno",
   "conceal_info_dialog_header" : "Twój sekret został ukryty w zdjęciu!",
+  "reveal_info_dialog_header" : "Sekret został ujawniony!",
   "file_too_large_error_message" : "Plik sekretu jest za duży dla kontynera",
-  "conceal_info_dialog_secondary_part_1" : "Wynikowy rozmiar pliku wynosi: ",
-  "conceal_info_dialog_secondary_part_2" : " Zdjęcie zostało zapisane w albumie 'stephanie',",
-  "conceal_info_dialog_secondary_part_3" : " otwórz zdjęcie.",
-  "reveal_info_dialog_header" : "Sekret został ujawniony!"
+  "info_dialog_secondary_part_1" : "Wynikowy rozmiar pliku wynosi: ",
+  "info_dialog_secondary_part_2" : " Zdjęcie zostało zapisane w albumie 'stephanie',",
+  "info_dialog_secondary_part_2_2" : " Plik audio został wyodrębniony i możesz go odsłuchać,",
+  "info_dialog_secondary_part_3" : " otwórz plik."
 }

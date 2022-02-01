@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:open_file/open_file.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/file_helper.dart';
+import 'package:stephanie/common/helpers/path_helper.dart';
 import 'package:stephanie/data/models/reveal.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/l10n/app_localizations_helper.dart';
@@ -68,7 +69,7 @@ class RevealInfoDialog extends StatelessWidget {
                         ),
                         children: <TextSpan>[
                           TextSpan(
-                            text: getString(context).conceal_info_dialog_secondary_part_1,
+                            text: getString(context).info_dialog_secondary_part_1,
                           ),
                           TextSpan(
                             text: FileHelper.getSizeOfFileMB(reveal.output!),
@@ -77,10 +78,10 @@ class RevealInfoDialog extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: getString(context).conceal_info_dialog_secondary_part_2,
+                            text: PathHelper.getExtensionFromPath(reveal.output!) == '.jpg' ? getString(context).info_dialog_secondary_part_2 :  getString(context).info_dialog_secondary_part_2_2,
                           ),
                           TextSpan(
-                            text: getString(context).conceal_info_dialog_secondary_part_3,
+                            text: getString(context).info_dialog_secondary_part_3,
                             recognizer: TapGestureRecognizer()
                               ..onTap = () => OpenFile.open(reveal.output!),
                             style: TextStyle(
