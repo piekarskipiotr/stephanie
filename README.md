@@ -14,3 +14,10 @@ Project is created with **Flutter 💙**.
 * [flutter_stegify](https://pub.dev/packages/flutter_stegify)
 * [path_provider](https://pub.dev/packages/path_provider)
 * [open_file](https://pub.dev/packages/open_file)
+
+## 💙 Flutter commands to run
+```
+flutter clean
+flutter pub get
+flutter run --no-sound-null-safety
+```
