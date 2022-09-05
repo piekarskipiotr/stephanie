@@ -2,6 +2,9 @@
 	<img src="hero.png" width="100%" />
 </p>
 
+## 🎥 Demo video
+<a href="https://youtu.be/wImEXjPUwlY"> Stephanie - demonstration video</a>
+
 ## 🛠 Technologies
 Project is created with **Flutter 💙**.
 
