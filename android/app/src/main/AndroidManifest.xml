@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.stephanie">
+    package="com.piekarskipiotr.stephanie">
 
     <permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 

@@ -66,9 +66,12 @@ class ConcealInfoDialog extends StatelessWidget {
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                       text: TextSpan(
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 14.0,
-                            fontWeight: FontWeight.w500
+                            fontWeight: FontWeight.w500,
+                            color: AppTheme.isDarkMode()
+                            ? Colors.white
+                            : Colors.black,
                         ),
                         children: <TextSpan>[
                           TextSpan(
