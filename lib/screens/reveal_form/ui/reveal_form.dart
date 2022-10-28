@@ -7,7 +7,6 @@ import 'package:lottie/lottie.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/app_dialog_helper.dart';
 import 'package:stephanie/common/helpers/opacity_helper.dart';
-import 'package:stephanie/common/helpers/padding_helper.dart';
 import 'package:stephanie/data/models/reveal.dart';
 import 'package:stephanie/resources/app_theme.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
@@ -68,20 +67,23 @@ class RevealForm extends StatelessWidget {
                 pinned: true,
                 expandedHeight: 180.0,
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                leading: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
-                    color: AppColors.gray,
+                automaticallyImplyLeading: false,
+                actions: [
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(
+                      Icons.close,
+                      color: AppColors.gray,
+                    ),
                   ),
-                ),
+                ],
                 flexibleSpace: LayoutBuilder(
                   builder: (context, constraints) {
                     var top = constraints.biggest.height;
                     return FlexibleSpaceBar(
                       centerTitle: false,
-                      titlePadding: EdgeInsets.only(
-                        left: PaddingHelper.calculatePadding(top),
+                      titlePadding: const EdgeInsets.only(
+                        left: 25.0,
                         right: 25.0,
                         bottom: 13.0,
                       ),

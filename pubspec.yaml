@@ -26,7 +26,7 @@ dependencies:
   path_provider: ^2.0.8
   open_file: ^3.2.1
   flutter_launcher_icons: ^0.9.2
-  flutter_native_splash: ^2.1.6
+  flutter_native_splash: ^2.2.9
 
 dev_dependencies:
   flutter_test:
@@ -43,21 +43,29 @@ flutter:
     - assets/logo/
     - assets/lottie/
 
+# flutter pub run flutter_native_splash:create
 flutter_native_splash:
-  color: "#B6C6FC"
+  color: "#FFFFFF"
   color_dark: "#303030"
-  icon_background_color: "#B6C6FC"
+  icon_background_color: "#FFFFFF"
   icon_background_color_dark: "#303030"
-  image: assets/logo/logo.png
+  image: assets/logo/stephanie_transparent_logo.png
+  image_dark: assets/logo/stephanie_transparent_logo.png
   android_gravity: center
   ios_content_mode: center
   fullscreen: true
   web: false
-  android12: true
+  android_12:
+    image: assets/logo/stephanie_transparent_logo.png
+    icon_background_color: "#FFFFFF"
+    icon_background_color_dark: "#303030"
+    color: "#FFFFFF"
+    color_dark: "#303030"
 
+# flutter pub run flutter_launcher_icons:main
 flutter_icons:
   android: "launcher_icon"
   ios: true
   remove_alpha_ios: true
-  image_path: assets/logo/logo.png
-  adaptive_icon_background: "#46DBC9"
+  image_path: assets/logo/stephanie_transparent_logo.png
+  adaptive_icon_background: "#FFFFFF"

@@ -225,7 +225,7 @@ class Home extends StatelessWidget {
                       child: SmallOutlinedButton(
                         text: getString(context).read_more,
                         isLoading: false,
-                        onClick: () => UrlHelper.openUrl('https://pl.wikipedia.org/wiki/Steganografia'),
+                        onClick: () => UrlHelper.openUrl('https://en.wikipedia.org/wiki/Steganography'),
                       ),
                     ),
                     const SizedBox(
