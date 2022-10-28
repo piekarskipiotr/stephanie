@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:open_file/open_file.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/file_helper.dart';
 import 'package:stephanie/common/helpers/path_helper.dart';
@@ -92,7 +92,7 @@ class RevealInfoDialog extends StatelessWidget {
                             text:
                                 getString(context).info_dialog_secondary_part_3,
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () => OpenFile.open(reveal.output!),
+                              ..onTap = () => OpenFilex.open(reveal.output!),
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor),
                           ),

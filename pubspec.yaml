@@ -24,7 +24,7 @@ dependencies:
   file_picker: ^4.3.3
   flutter_stegify: ^0.2.0
   path_provider: ^2.0.8
-  open_file: ^3.2.1
+  open_filex: ^3.4.0
   flutter_launcher_icons: ^0.9.2
   flutter_native_splash: ^2.2.9
 

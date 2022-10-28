@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:open_file/open_file.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/file_helper.dart';
 import 'package:stephanie/data/models/conceal.dart';
@@ -86,7 +86,7 @@ class ConcealInfoDialog extends StatelessWidget {
                           TextSpan(
                             text: getString(context).info_dialog_secondary_part_3,
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () => OpenFile.open(conceal.output!),
+                              ..onTap = () => OpenFilex.open(conceal.output!),
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor
                             ),
