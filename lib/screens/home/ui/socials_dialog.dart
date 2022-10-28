@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/url_helper.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/colors/color_helper.dart';
@@ -45,7 +44,9 @@ class _SocialsDialogState extends State<SocialsDialog> {
                   width: 96.0,
                   height: 96.0,
                   child: CircleAvatar(
-                    backgroundImage: AssetImage(me),
+                    backgroundImage: NetworkImage(
+                      'https://github.com/piekarskipiotr.png',
+                    ),
                   ),
                 )
               ],
@@ -68,7 +69,8 @@ class _SocialsDialogState extends State<SocialsDialog> {
                 children: [
                   Expanded(
                     child: InkWell(
-                      onTap: () => UrlHelper.openUrl('https://github.com/piekarskipiotr'),
+                      onTap: () => UrlHelper.openUrl(
+                          'https://github.com/piekarskipiotr'),
                       borderRadius: const BorderRadius.all(
                         Radius.circular(14.0),
                       ),
@@ -97,7 +99,8 @@ class _SocialsDialogState extends State<SocialsDialog> {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: () => UrlHelper.openUrl('https://www.linkedin.com/in/piekarskipiotr/'),
+                      onTap: () => UrlHelper.openUrl(
+                          'https://www.linkedin.com/in/piekarskipiotr/'),
                       borderRadius: const BorderRadius.all(
                         Radius.circular(14.0),
                       ),
