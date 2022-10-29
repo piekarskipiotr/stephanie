@@ -67,6 +67,7 @@ class RevealForm extends StatelessWidget {
                 pinned: true,
                 expandedHeight: 180.0,
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                systemOverlayStyle: AppTheme.appBarSystemUIOverlayStyle,
                 automaticallyImplyLeading: false,
                 actions: [
                   IconButton(

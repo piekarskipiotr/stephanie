@@ -68,4 +68,5 @@ flutter_icons:
   ios: true
   remove_alpha_ios: true
   image_path: assets/logo/stephanie_transparent_logo.png
+  image_path_ios: assets/logo/stephanie_logo.png
   adaptive_icon_background: "#FFFFFF"

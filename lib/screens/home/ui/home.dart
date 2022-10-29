@@ -29,6 +29,7 @@ class Home extends StatelessWidget {
               elevation: 0.0,
               pinned: true,
               expandedHeight: 180.0,
+              systemOverlayStyle: AppTheme.appBarSystemUIOverlayStyle,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               flexibleSpace: LayoutBuilder(
                 builder: (context, constraints) {
