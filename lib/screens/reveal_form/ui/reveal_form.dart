@@ -72,9 +72,11 @@ class RevealForm extends StatelessWidget {
                 actions: [
                   IconButton(
                     onPressed: () => Navigator.pop(context),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.close,
-                      color: AppColors.gray,
+                      color: AppTheme.isDarkMode()
+                          ? Colors.white
+                          : Colors.black,
                     ),
                   ),
                 ],
