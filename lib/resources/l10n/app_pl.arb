@@ -23,7 +23,7 @@
   "what_steganography_is_text" : " - badanie komunikacji w taki sposób, aby nie można było wykryć obecności wiadomości. W przeciwieństwie do kryptografii (gdzie nie zaprzecza się obecności wiadomości, ale jej treść jest tajna), steganografia stara się ukryć fakt prowadzenia komunikacji.",
   "read_more" : "Czytaj dalej",
   "want_to_discuss" : "Chcesz podyskutować?",
-  "message_me" : "Napisz do mnie",
+  "contact_me" : "Skontaktuj się ze mną",
   "created_by" : "Stworzone przez",
   "with_text" : "z",
   "email_address" : "Adres Email",

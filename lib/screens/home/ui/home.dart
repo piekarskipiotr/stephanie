@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/app_bottom_dialog_helper.dart';
@@ -52,7 +51,9 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                color: AppTheme.isDarkMode() ? Colors.white : Colors.black,
+                                color: AppTheme.isDarkMode()
+                                    ? Colors.white
+                                    : Colors.black,
                               ),
                             )
                           : Text(
@@ -61,7 +62,9 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                color: AppTheme.isDarkMode() ? Colors.white : Colors.black,
+                                color: AppTheme.isDarkMode()
+                                    ? Colors.white
+                                    : Colors.black,
                               ),
                             ),
                     ),
@@ -120,9 +123,7 @@ class Home extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: getString(context)
-                                .reveal
-                                .toLowerCase(),
+                            text: getString(context).reveal.toLowerCase(),
                             style: const TextStyle(
                               fontStyle: FontStyle.italic,
                               color: AppColors.gray,
@@ -226,7 +227,8 @@ class Home extends StatelessWidget {
                       child: SmallOutlinedButton(
                         text: getString(context).read_more,
                         isLoading: false,
-                        onClick: () => UrlHelper.openUrl('https://en.wikipedia.org/wiki/Steganography'),
+                        onClick: () => UrlHelper.openUrl(
+                            'https://en.wikipedia.org/wiki/Steganography'),
                       ),
                     ),
                     const SizedBox(
@@ -249,54 +251,15 @@ class Home extends StatelessWidget {
                       height: 10.0,
                     ),
                     LongerButton(
-                      text: getString(context).message_me,
+                      text: getString(context).contact_me,
                       isLoading: false,
-                      onClick: () async =>
-                          UrlHelper.openEmail('ppiekarski8+stephanie@gmail.com'),
-                    ),
-                    const SizedBox(
-                      height: 35.0,
-                    ),
-                    const Divider(
-                      height: 1,
-                      thickness: 1,
-                      color: AppColors.lightGray,
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        text: getString(context).created_by,
-                        style: const TextStyle(color: AppColors.gray),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: ' Piotr Piekarski ',
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => AppBottomDialogHelper.show(
-                                  context, const SocialsDialog()),
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                          ),
-                          TextSpan(
-                            text: getString(context).with_text,
-                          ),
-                          TextSpan(
-                            text: ' Flutter 💙',
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => UrlHelper.openUrl('https://flutter.dev/'),
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                          ),
-                        ],
+                      onClick: () => AppBottomDialogHelper.show(
+                        context,
+                        const SocialsDialog(),
                       ),
                     ),
                     const SizedBox(
-                      height: 20.0,
+                      height: 35.0,
                     ),
                   ],
                 ),

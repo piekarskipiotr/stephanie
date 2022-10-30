@@ -24,7 +24,7 @@
   "what_steganography_is_text" : " - the study of communication in such a way that the presence of a message cannot be detected. Contrary to cryptography (where the presence of a message is not denied, but its content is secret), steganography tries to hide the fact of conducting communication.",
   "read_more" : "Read more",
   "want_to_discuss" : "Want to discuss?",
-  "message_me" : "Message me",
+  "contact_me" : "Contact me",
   "created_by" : "Created by",
   "with_text" : "with",
   "email_address" : "Email address",

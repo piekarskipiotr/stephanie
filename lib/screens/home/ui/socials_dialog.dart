@@ -22,7 +22,7 @@ class _SocialsDialogState extends State<SocialsDialog> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.only(top: 15.0, bottom: 10.0),
+        padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,7 +36,7 @@ class _SocialsDialogState extends State<SocialsDialog> {
               ),
             ),
             const SizedBox(
-              height: 25.0,
+              height: 30.0,
             ),
             Column(
               mainAxisSize: MainAxisSize.max,
@@ -166,6 +166,7 @@ class _SocialsDialogState extends State<SocialsDialog> {
             ),
             Column(
               mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ListTile(
                   onLongPress: () => setState(() {
@@ -192,15 +193,6 @@ class _SocialsDialogState extends State<SocialsDialog> {
                       ],
                     ),
                   ),
-                  trailing: showCopiedMessageEmail
-                      ? Text(
-                          getString(context).copied,
-                          style: const TextStyle(
-                            fontSize: 10.0,
-                            color: Colors.green,
-                          ),
-                        )
-                      : null,
                   title: const Padding(
                     padding: EdgeInsets.only(left: 8.0),
                     child: Text(
@@ -220,6 +212,20 @@ class _SocialsDialogState extends State<SocialsDialog> {
                     ),
                   ),
                 ),
+                if (showCopiedMessageEmail) ...[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 80.0),
+                    child: Text(
+                      getString(context).copied,
+                      style: const TextStyle(
+                        fontSize: 10.0,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ),
+                ] else ... [
+                  const SizedBox(height: 12.0,),
+                ],
               ],
             ),
             const SizedBox(
