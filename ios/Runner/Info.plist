@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>stephanie</string>
+	<string>Stephanie - Steganography app</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -35,11 +35,11 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>Picking music</string>
+	<string>This app requires access to music library to upload file in form of steganography process</string>
 	<key>NSCameraUsageDescription</key>
-	<string>To take photo</string>
+	<string>This app requires access to camera to take photo and upload it in form of steganography process</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Picking images</string>
+	<string>This app requires access to photo library to upload file in form of steganography process</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
