@@ -252,7 +252,7 @@ class Home extends StatelessWidget {
                       text: getString(context).message_me,
                       isLoading: false,
                       onClick: () async =>
-                          UrlHelper.openEmail('ppiekarski8@gmail.com'),
+                          UrlHelper.openEmail('ppiekarski8+stephanie@gmail.com'),
                     ),
                     const SizedBox(
                       height: 35.0,

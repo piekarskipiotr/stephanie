@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:stephanie/common/constants.dart';
 import 'package:stephanie/common/helpers/url_helper.dart';
 import 'package:stephanie/resources/colors/app_colors.dart';
 import 'package:stephanie/resources/colors/color_helper.dart';
@@ -39,16 +40,19 @@ class _SocialsDialogState extends State<SocialsDialog> {
             ),
             Column(
               mainAxisSize: MainAxisSize.max,
-              children: const [
-                SizedBox(
-                  width: 96.0,
-                  height: 96.0,
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(48.0),
+                  child: Container(
+                    width: 96.0,
+                    height: 96.0,
+                    color: AppColors.lightGray,
+                    child: Image.network(
                       'https://github.com/piekarskipiotr.png',
+                      errorBuilder: (context, error, stackTrace) => Image.asset(me),
                     ),
                   ),
-                )
+                ),
               ],
             ),
             const SizedBox(
@@ -129,7 +133,8 @@ class _SocialsDialogState extends State<SocialsDialog> {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: () => UrlHelper.openEmail('ppiekarski8@gmail.com'),
+                      onTap: () => UrlHelper.openEmail(
+                          'ppiekarski8+stephanie@gmail.com'),
                       borderRadius: const BorderRadius.all(
                         Radius.circular(14.0),
                       ),
@@ -166,7 +171,8 @@ class _SocialsDialogState extends State<SocialsDialog> {
                   onLongPress: () => setState(() {
                     showCopiedMessageEmail = true;
                     Clipboard.setData(
-                      const ClipboardData(text: 'ppiekarski8@gmail.com'),
+                      const ClipboardData(
+                          text: 'ppiekarski8+stephanie@gmail.com'),
                     );
                     Timer(
                       const Duration(seconds: 2),
@@ -198,7 +204,7 @@ class _SocialsDialogState extends State<SocialsDialog> {
                   title: const Padding(
                     padding: EdgeInsets.only(left: 8.0),
                     child: Text(
-                      'ppiekarski8@gmail.com',
+                      'ppiekarski8+stephanie@gmail.com',
                       style: TextStyle(
                         fontSize: 16.0,
                       ),
